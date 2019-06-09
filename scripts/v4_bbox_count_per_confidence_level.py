@@ -6,7 +6,7 @@ conf_count_dict = {}
 def bbox_count_per_confidence_level():
     for filename in os.listdir('./mAP/predicted/'):
         if filename.endswith('.txt'):
-            with open(filename) as f:
+            with open('./mAP/predicted/'+filename) as f:
                 lines = f.readlines()
                 for line in lines:
                     items = line.split()
