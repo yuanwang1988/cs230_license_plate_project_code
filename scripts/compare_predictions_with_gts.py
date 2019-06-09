@@ -158,6 +158,8 @@ if __name__ == '__main__':
 				str(summary['num_gts'])]) + "\n")
 
 
+		print('print precision & recall vs. conf threshold:')
+		print('conf_threshold : true positives, false positives')
 		for conf_threshold in [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
 			total_tp = 0
 			total_fp = 0
