@@ -156,3 +156,29 @@ if __name__ == '__main__':
 			summary_file.write(','.join([str(i), '{:.2f}'.format(summary['iou']), str(summary['total_pred_area']), 
 				str(summary['total_gt_area']), str(summary['num_matches']), str(summary['num_preds']), 
 				str(summary['num_gts'])]) + "\n")
+
+
+		for conf_threshold in [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
+			total_tp = 0
+			total_fp = 0
+			for i in xrange(2064):
+				gt_bboxes = parse_ground_truth_file('/home/yuan/Learning/cs230/data/mAP/ground-truth/{}.txt'.format(i))
+				pr_bboxes = parse_prediction_file('/home/yuan/Learning/cs230/data/mAP/predicted/{}.txt'.format(i))
+				matches, summary = compare_precition_and_ground_truth(pr_bboxes, gt_bboxes, conf_threshold=conf_threshold)
+
+				# print('ground truth')
+				# for gt_bbox in gt_bboxes:
+				# 	print(gt_bbox)
+
+				# print('predictions')
+				# for pr_bbox in pr_bboxes:
+				# 	print(pr_bbox)
+
+				# print('matches')
+				# for match in matches:
+				# 	print(match)
+
+				total_tp += summary['num_matches']
+				total_fp += summary['num_preds'] - summary['num_matches']
+
+			print('{} : {} {}'.format(conf_threshold, total_tp, total_fp))
