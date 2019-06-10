@@ -164,8 +164,8 @@ if __name__ == '__main__':
 			total_tp = 0
 			total_fp = 0
 			for i in xrange(2064):
-				gt_bboxes = parse_ground_truth_file('/home/yuan/Learning/cs230/data/mAP/ground-truth/{}.txt'.format(i))
-				pr_bboxes = parse_prediction_file('/home/yuan/Learning/cs230/data/mAP/predicted/{}.txt'.format(i))
+				gt_bboxes = parse_ground_truth_file('/home/yuan/Learning/cs230/data/mAP_v4/mAP/ground-truth/{}.txt'.format(i))
+				pr_bboxes = parse_prediction_file('/home/yuan/Learning/cs230/data/mAP_v4/mAP/predicted/{}.txt'.format(i))
 				matches, summary = compare_precition_and_ground_truth(pr_bboxes, gt_bboxes, conf_threshold=conf_threshold)
 
 				# print('ground truth')
